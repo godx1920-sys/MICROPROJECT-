@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Viewer</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+
+    #pdfContainer {
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.5s ease;
+      display: none;
+    }
+
+    #pdfContainer.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+    <h1>📄 Micro Project Guidelines</h1>
+
+    <button onclick="showPDF()">Open PDF</button>
+
+    <div id="pdfContainer">
+      <iframe 
+        src="pdf/Project.pdf" 
+        width="100%" 
+        height="500px">
+      </iframe>
+    </div>
+  </div>
+
+  <script>
+    function showPDF() {
+      const pdf = document.getElementById("pdfContainer");
+
+      pdf.style.display = "block";
+
+      setTimeout(() => {
+        pdf.classList.add("show");
+      }, 100);
+    }
+  </script>
+
+</body>
+</html>
